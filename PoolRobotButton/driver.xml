@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<devicedata>
+	<copyright>Reverse-engineered iAquaLink/Zodiac pool robot control</copyright>
+	<creator>Custom</creator>
+	<manufacturer>Zodiac</manufacturer>
+	<name>Pool Robot (iAquaLink)</name>
+	<model>Pool Robot (iAquaLink)</model>
+	<created>07/27/2026 12:00 PM</created>
+	<modified>10/08/2026 08:40 AM</modified>
+	<version>13</version>
+	<small image_source="c4z">icons/device_sm.png</small>
+	<large image_source="c4z">icons/device_lg.png</large>
+	<control>lua_gen</control>
+	<controlmethod>ip</controlmethod>
+	<driver>DriverWorks</driver>
+	<templatedescription>Base Template, used in all templates.</templatedescription>
+	<combo>false</combo>
+	<OnlineCategory>others</OnlineCategory>
+	<proxies qty="1">
+		<proxy proxybindingid="5001" name="Pool Robot" small_image="icons/device_sm.png" large_image="icons/device_lg.png" image_source="c4z">uibutton</proxy>
+	</proxies>
+	<connections>
+		<connection>
+			<id>5001</id>
+			<facing>6</facing>
+			<connectionname>UIBUTTON</connectionname>
+			<type>2</type>
+			<consumer>False</consumer>
+			<audiosource>True</audiosource>
+			<videosource>True</videosource>
+			<linelevel>True</linelevel>
+			<classes>
+				<class>
+					<classname>UIBUTTON</classname>
+				</class>
+			</classes>
+		</connection>
+	</connections>
+	<capabilities>
+		<navigator_display_option proxybindingid="5001">
+			<display_icons>
+				<Icon height="90" width="90">controller://driver/PoolRobotButton/icons/device/default_90.png</Icon>
+				<Icon height="70" width="70">controller://driver/PoolRobotButton/icons/device/default_70.png</Icon>
+				<Icon height="300" width="300">controller://driver/PoolRobotButton/icons/device/default_300.png</Icon>
+				<Icon height="512" width="512">controller://driver/PoolRobotButton/icons/device/default_512.png</Icon>
+				<Icon height="1024" width="1024">controller://driver/PoolRobotButton/icons/device/default_1024.png</Icon>
+				<state id="Default">
+					<Icon width="70" height="70">controller://driver/PoolRobotButton/icons/device/default_70.png</Icon>
+					<Icon width="90" height="90">controller://driver/PoolRobotButton/icons/device/default_90.png</Icon>
+					<Icon width="300" height="300">controller://driver/PoolRobotButton/icons/device/default_300.png</Icon>
+					<Icon width="512" height="512">controller://driver/PoolRobotButton/icons/device/default_512.png</Icon>
+					<Icon width="1024" height="1024">controller://driver/PoolRobotButton/icons/device/default_1024.png</Icon>
+				</state>
+				<state id="Selected">
+					<Icon width="70" height="70">controller://driver/PoolRobotButton/icons/device/selected_70.png</Icon>
+					<Icon width="90" height="90">controller://driver/PoolRobotButton/icons/device/selected_90.png</Icon>
+					<Icon width="300" height="300">controller://driver/PoolRobotButton/icons/device/selected_300.png</Icon>
+					<Icon width="512" height="512">controller://driver/PoolRobotButton/icons/device/selected_512.png</Icon>
+					<Icon width="1024" height="1024">controller://driver/PoolRobotButton/icons/device/selected_1024.png</Icon>
+				</state>
+			</display_icons>
+		</navigator_display_option>
+	</capabilities>
+	<config>
+		<power_management_method>AlwaysOn</power_management_method>
+		<power_command_delay>0</power_command_delay>
+		<power_delay>0</power_delay>
+		<power_command_needed>False</power_command_needed>
+		<script file="driver.lua" />
+		<actions>
+			<action>
+				<name>Start Cleaning</name>
+				<command>StartCleaning</command>
+			</action>
+			<action>
+				<name>Stop Cleaning</name>
+				<command>StopCleaning</command>
+			</action>
+			<action>
+				<name>Refresh Robot List</name>
+				<command>RefreshRobotList</command>
+			</action>
+		</actions>
+		<commands>
+			<command>
+				<name>StartCleaning</name>
+				<description>Start Cleaning</description>
+			</command>
+			<command>
+				<name>StopCleaning</name>
+				<description>Stop Cleaning</description>
+			</command>
+			<command>
+				<name>RefreshRobotList</name>
+				<description>Refresh Robot List</description>
+			</command>
+		</commands>
+		<properties>
+			<property>
+				<name>Email</name>
+				<type>STRING</type>
+				<readonly>false</readonly>
+				<default />
+			</property>
+			<property>
+				<name>Password</name>
+				<type>STRING</type>
+				<readonly>false</readonly>
+				<password>true</password>
+				<default />
+			</property>
+			<property>
+				<name>Robot</name>
+				<type>DYNAMIC_LIST</type>
+				<readonly>false</readonly>
+				<default />
+			</property>
+			<property>
+				<name>Robot Serial</name>
+				<type>STRING</type>
+				<readonly>true</readonly>
+				<default />
+			</property>
+			<property>
+				<name>Status</name>
+				<type>STRING</type>
+				<readonly>true</readonly>
+				<default>Idle</default>
+			</property>
+			<property>
+				<name>Debug Mode</name>
+				<type>LIST</type>
+				<readonly>false</readonly>
+				<default>Off</default>
+				<items>
+					<item>Off</item>
+					<item>Print</item>
+				</items>
+			</property>
+			<property>
+				<name>Current State</name>
+				<type>STRING</type>
+				<readonly>true</readonly>
+				<default>Idle</default>
+			</property>
+			<property>
+				<name>Poll Interval (Seconds)</name>
+				<type>STRING</type>
+				<readonly>false</readonly>
+				<default>0</default>
+			</property>
+			<property>
+				<name>Canister</name>
+				<type>STRING</type>
+				<readonly>true</readonly>
+				<default>Unknown</default>
+			</property>
+		</properties>
+	</config>
+	<events>
+		<event>
+			<id>1</id>
+			<name>Canister Full</name>
+			<description>The robot reports its debris canister needs emptying</description>
+		</event>
+		<event>
+			<id>2</id>
+			<name>Canister Emptied</name>
+			<description>The robot's debris canister is no longer reported full</description>
+		</event>
+	</events>
+</devicedata>
